@@ -1,0 +1,33 @@
+{
+  "name": "game-companion-services",
+  "version": "0.0.1",
+  "description": "Backend for game companion web site",
+  "scripts": {
+    "start": "npm run serve",
+    "build": "npm run build-ts && npm run tslint && npm run copy-assets",
+    "serve": "node dist/index.js",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "copy-assets": "ts-node copyAssets.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rene Durazo",
+  "license": "MIT",
+  "dependencies": {
+    "@types/dotenv": "^4.0.3",
+    "@types/hapi": "^17.0.17",
+    "@types/shelljs": "^0.8.0",
+    "@types/winston": "^2.3.9",
+    "blankie": "^4.0.0",
+    "commonjs": "0.0.1",
+    "dotenv": "^6.0.0",
+    "hapi": "^17.5.3",
+    "scooter": "^5.0.0",
+    "shelljs": "^0.8.2",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1",
+    "winston": "^3.0.0"
+  }
+}
