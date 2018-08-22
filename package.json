@@ -4,8 +4,9 @@
   "description": "Backend for game companion web site",
   "scripts": {
     "start": "npm run serve",
-    "build": "npm run build-ts && npm run tslint && npm run copy-assets",
+    "build": "npm run build-ts && npm run tslint && npm run copy-assets && webpack",
     "serve": "node dist/index.js",
+    "dev": "node dev.server.js",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
@@ -14,20 +15,39 @@
   },
   "author": "Rene Durazo",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@types/dotenv": "^4.0.3",
     "@types/hapi": "^17.0.17",
+    "@types/react": "^16.4.11",
+    "@types/react-dom": "^16.0.7",
     "@types/shelljs": "^0.8.0",
+    "@types/webpack-env": "^1.13.6",
     "@types/winston": "^2.3.9",
+    "awesome-typescript-loader": "^5.2.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "shelljs": "^0.8.2",
+    "source-map": "^0.7.3",
+    "source-map-loader": "^0.2.4",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "typescript": "^3.0.1",
+    "webpack": "^4.17.0",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-node-externals": "^1.7.2",
+    "winston": "^3.0.0"
+  },
+  "dependencies": {
     "blankie": "^4.0.0",
     "commonjs": "0.0.1",
     "dotenv": "^6.0.0",
     "hapi": "^17.5.3",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
     "scooter": "^5.0.0",
-    "shelljs": "^0.8.2",
-    "ts-node": "^7.0.1",
-    "tslint": "^5.11.0",
-    "typescript": "^3.0.1",
-    "winston": "^3.0.0"
+    "wreck": "^14.0.2"
   }
 }

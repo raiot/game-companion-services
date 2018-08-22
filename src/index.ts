@@ -3,8 +3,10 @@ import Blankie from 'blankie';
 import Scooter from 'scooter';
 import logger from './tools/logger';
 import { PORT } from './config/secrets';
+import * as handler from './server/api';
 
 const internals: Internals = {};
+const API_URI = '/api';
 
 const server: hapi.Server = new hapi.Server({
     host: 'localhost',
@@ -16,6 +18,10 @@ internals.init = async () => {
         plugin: Blankie,
         options: {}
     }]);
+
+    server.route([
+        { path: `${API_URI}/games`, method: 'GET', handler: handler.getGames }
+    ]);
 
     await server.start();
     if (process.env.NODE_ENV !== 'production') {

@@ -4,3 +4,4 @@ interface Internals {
 
 declare module 'blankie';
 declare module 'scooter';
+declare module 'wreck';
