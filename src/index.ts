@@ -4,6 +4,7 @@ import Scooter from 'scooter';
 import logger from './tools/logger';
 import { PORT } from './config/secrets';
 import * as handler from './server/api';
+import indexHandler from './server';
 
 const internals: Internals = {};
 const API_URI = '/api';
@@ -20,6 +21,7 @@ internals.init = async () => {
     }]);
 
     server.route([
+        { path: '/', method: 'GET', handler: indexHandler },
         { path: `${API_URI}/games`, method: 'GET', handler: handler.getGames }
     ]);
 

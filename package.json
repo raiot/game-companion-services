@@ -5,8 +5,7 @@
   "scripts": {
     "start": "npm run serve",
     "build": "npm run build-ts && npm run tslint && npm run copy-assets && webpack",
-    "serve": "node dist/index.js",
-    "dev": "node dev.server.js",
+    "serve": "webpack --mode=development && node dist/index.js",
     "build-ts": "tsc",
     "watch-ts": "tsc -w",
     "tslint": "tslint -c tslint.json -p tsconfig.json",
@@ -33,6 +32,7 @@
     "shelljs": "^0.8.2",
     "source-map": "^0.7.3",
     "source-map-loader": "^0.2.4",
+    "styled-components": "^3.4.4",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1",

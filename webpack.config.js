@@ -1,33 +1,47 @@
-var path = require('path');
-var webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
+const path = require('path');
 
 module.exports = {
-    entry: [
-        './src/client/index.tsx',
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:3080'
+    target: 'node',
+    externals: [
+        nodeExternals(),
+        {'react': 'React'},
+        {'react-dom': 'ReactDOM'}
     ],
-    mode: 'development',
+    entry: path.resolve(__dirname, './src/index.ts'),
     output: {
-        filename: 'bundle.js',
-        path: path.join(__dirname, 'dist'),
-        publicPath: '/dist/'
+        path: path.resolve(__dirname, 'dist'),
+        publicPath: '/dist/',
+        filename: 'index.js',
+        library: 'app',
+        libraryTarget: 'commonjs2'
     },
-    plugins: [
-        new webpack.HotModuleReplacementPlugin()
-    ],
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.json']
+        extensions: ['.js', '.json', '.tsx', '.ts'],
+        alias: {
+            components: path.resolve(__dirname, '..', 'src/client')
+        }
     },
-    devtool: 'source-map',
     module: {
         rules: [
-            { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
-            { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
+            {
+                test: /\.tsx?$/,
+                loader: 'awesome-typescript-loader',
+            },
+            { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+            {
+                test: /\.scss$/,
+                loader: 'css-loader/locals'
+            },
+            {
+                test: /\.(ttf|eot|otf|svg|png)$/,
+                loader: 'file-loader?emitFile=false'
+            },
+            {
+                test: /\.(woff|woff2)$/,
+                loader: 'url-loader?emitFile=false'
+            }
         ]
     },
-    externals: {
-        'react': 'React',
-        'react-dom': 'ReactDOM'
-    }
+    devtool: 'source-map'
 }
